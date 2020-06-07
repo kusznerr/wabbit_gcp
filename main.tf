@@ -1,6 +1,6 @@
 provider "google" {
-  //credentials = "${file("account.json")}"
-  //project     = "wabbit-rk2" Removed project reference - added to terraform cloud workspace veriables
+  //credentials = "${file("account.json")}" -> Setup in GOOGLE_CREDENTIALS veriable (remove newline)
+  project     = var.project // needs to be declared in terraform cloud workspace veriables
   region      = "europe-west3"
   zone        = "europe-west3-c"
 }
