@@ -4,7 +4,7 @@ provider "google" {
   region      = var.region
 }
 
-resource =  "google_compute_address" "test-static-ip-address" {
+resource "google_compute_address" "test-static-ip-address" {
  count  = var.gcp_vm_count
  name   = var.project"-wabbit-external-ip-"var.wabbitwww""var.count.index
  region = var.region
