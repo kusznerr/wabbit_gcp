@@ -86,7 +86,7 @@ resource "google_compute_firewall" "wabbit_fw" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "8080", "443", "7443" , "1935"]
+    ports    = ["80", "8080", "443", "7443" , "1935" , "22"]
   }
 
 

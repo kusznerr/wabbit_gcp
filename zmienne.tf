@@ -14,7 +14,7 @@ variable "zone" {
 
 variable "network_name" {
   description = "Wabbit VPC network name"
-  default = "wabbitvpc"
+  default = "wabbit"
 }
 
 variable "gcp_vm_count" {
@@ -26,6 +26,11 @@ variable "wabbitwww" {
   description = "BBB server names"
   default="www"
 }
+
+variable "wabbit_cidr_range" {
+  default = "10.0.0.0/20"
+}
+
 
 
 
