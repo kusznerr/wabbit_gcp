@@ -6,13 +6,13 @@ provider "google" {
 
 resource "google_compute_address" "test-static-ip-address" {
  count  = var.gcp_vm_count
- name   = "${var.project}-wabbit-external-ip-${var.wabbitwww}${var.count.index}"
+ name   = "${var.project}-wabbit-external-ip-${var.wabbitwww}${count.index}"
  region = var.region
  }
 
 resource "google_compute_instance" "vm_instance" {
   count        = var.gcp_vm_count
-  name         = "${var.wabbitwww}${var.count.index}"
+  name         = "${var.wabbitwww}${count.index}"
   zone        = var.zone
   machine_type = "f1-micro"
 
