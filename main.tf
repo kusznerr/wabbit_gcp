@@ -24,6 +24,24 @@ resource "google_compute_instance" "vm_instance" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name                    = "wabbit-network"
+  name                    = var.network_name
   auto_create_subnetworks = "true"
+}
+
+resource "google_compute_firewall" "wabbit_fw" {
+  name    = "wabbit-firewall"
+  network = google_compute_network.vpc_network.name
+
+  allow {
+    protocol = "udp"
+    ports = ["16384-32768"]
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "8080", "443", "7443" , "1935"]
+  }
+
+
+  //source_tags = ["wabbit_bbb"]
 }
