@@ -1,5 +1,5 @@
 variable "GOOGLE_CREDENTIALS" {
-  desription = "This needs to be added na Terraform cloud workspace veriables"
+  description = "This needs to be added na Terraform cloud workspace veriables"
 }
 
 
