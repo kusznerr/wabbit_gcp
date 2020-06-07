@@ -1,3 +1,8 @@
+variable "GOOGLE_CREDENTIALS" {
+  desription = "This needs to be added na Terraform cloud workspace veriables"
+}
+
+
 variable project {
     description = "Reference Project name"
     default = "wabbit"
