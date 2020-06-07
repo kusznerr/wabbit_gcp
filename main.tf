@@ -44,7 +44,7 @@ resource "google_compute_instance" "bbb_instance" {
 
 resource "google_compute_instance" "nomad_instance" {
   //count        = var.gcp_vm_count
-  name         = "1nomad-${var.wabbitwww}"
+  name         = "nomad-${var.wabbitwww}"
   zone        = var.zone
   machine_type = "f1-micro"
 
