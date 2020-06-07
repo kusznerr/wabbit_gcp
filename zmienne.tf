@@ -17,7 +17,7 @@ variable "network_name" {
   default = "wabbitvpc"
 }
 
-variable "gcp_vm_count" {\
+variable "gcp_vm_count" {
 description = "Number of VMs to be run"
 default=1
 }
