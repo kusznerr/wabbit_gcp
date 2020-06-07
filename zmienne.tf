@@ -5,7 +5,7 @@ variable project {
 
 variable "network_name" {
   description = "Wabbit VPC network name"
-  default = "wabbitVPC"
+  default = "wabbitvpc"
 }
 
 
