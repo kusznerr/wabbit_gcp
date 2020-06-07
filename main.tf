@@ -53,6 +53,11 @@ resource "google_compute_instance" "nomad_instance" {
       image = "ubuntu-os-cloud/ubuntu-1804-lts"
     }
   }
+  provisioner "remote-exec" {
+    inline = [
+      "ls /tmp"
+    ]
+  }
 
   network_interface {
     # A default network is created for all GCP projects
@@ -78,7 +83,7 @@ resource "google_compute_subnetwork" "wabbit-subnet" {
 
 resource "google_compute_network_peering" "peer_to_wabbit" {
   name         = "peering${var.wabbitwww}"
-  network      = "${google_compute_network.vpc_network.self_link}"
+  network      = google_compute_network.vpc_network.self_link
   peer_network = "projects/wabbit/global/networks/klasa-vpc"
 }
 
