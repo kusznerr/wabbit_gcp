@@ -67,9 +67,9 @@ resource "google_compute_network" "vpc_network" {
   auto_create_subnetworks = "fales"
 }
 
-resource "google_compute_network" "wabbit-subnet" {
+resource "google_compute_subnetwork" "wabbit-subnet" {
   name    = "${var.network_name}-subnet"
-  ip_cidr_range "10.10.10.10/22"
+  ip_cidr_range = "10.10.10.10/22"
   region = var.region
   network = google_compute_network.vpc_network.self_link
 }
