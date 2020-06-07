@@ -15,7 +15,8 @@ resource "google_compute_address" "test-static-ip-address" {
   name         = "${var.wabbitwww}${count.index}-internal-address"
   address_type = "INTERNAL"
   //network       = google_compute_network.vpc_network.self_link
-  region       = "us-central1"
+  region       = var.region
+  subnetwork       = google_compute_subnetwork.wabbit-subnet.self_link
 }
 
 resource "google_compute_instance" "bbb_instance" {
@@ -33,7 +34,7 @@ resource "google_compute_instance" "bbb_instance" {
 
   network_interface {
     # A default network is created for all GCP projects
-    network       = google_compute_network.vpc_network.self_link
+    subnetwork       = google_compute_subnetwork.wabbit-subnet.self_link
     network_ip = google_compute_address.internal_ip[count.index].address
     access_config {
       nat_ip = google_compute_address.test-static-ip-address[count.index].address
@@ -55,7 +56,7 @@ resource "google_compute_instance" "nomad_instance" {
 
   network_interface {
     # A default network is created for all GCP projects
-    network       = google_compute_network.vpc_network.self_link
+    subnetwork       = google_compute_subnetwork.wabbit-subnet.self_link
     access_config {
       }
   }
@@ -63,8 +64,16 @@ resource "google_compute_instance" "nomad_instance" {
 
 resource "google_compute_network" "vpc_network" {
   name                    = var.network_name
-  auto_create_subnetworks = "true"
+  auto_create_subnetworks = "fales"
 }
+
+resource "google_compute_network" "wabbit-subnet" {
+  name    = "${var.network_name}-subnet"
+  ip_cidr_range "10.10.10.10/22"
+  region = var.region
+  network = google_compute_network.vpc_network.self_link
+}
+
 
 resource "google_compute_firewall" "wabbit_fw" {
   name    = "wabbit-firewall"
