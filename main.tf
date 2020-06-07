@@ -1,6 +1,6 @@
 provider "google" {
   //credentials = "${file("account.json")}" -> Setup in GOOGLE_CREDENTIALS veriable (remove newline)
-  project     = var.project // needs to be declared in terraform cloud workspace veriables
+  project     = var.project 
   region      = "europe-west3"
   zone        = "europe-west3-c"
 }
