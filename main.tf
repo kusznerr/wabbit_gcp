@@ -1,12 +1,19 @@
 provider "google" {
   //credentials = "${file("account.json")}" -> Setup in GOOGLE_CREDENTIALS veriable (remove newline)
   project     = var.project 
-  region      = "europe-west3"
-  zone        = "europe-west3-c"
+  region      = var.region
 }
 
+resource =  "google_compute_address" "test-static-ip-address" {
+ count  = "${var.gcp_vm_count}"
+ name   = "${var.project}-wabbit-external-ip-${wabbitwww}${count.index}"
+ region = "${var.region}"
+ }
+
 resource "google_compute_instance" "vm_instance" {
-  name         = "www40"
+  count        = "${var.gcp_vm_count}"
+  name         = "${wabbitwww}${count.index}"
+  zone        = var.zone
   machine_type = "f1-micro"
 
   boot_disk {
