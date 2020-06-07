@@ -74,6 +74,15 @@ resource "google_compute_subnetwork" "wabbit-subnet" {
   network = google_compute_network.vpc_network.self_link
 }
 
+// VPC peering to wabbit main project
+
+resource "google_compute_network_peering" "peer_to_wabbit" {
+  name         = "peering${var.wabbitwww}"
+  network      = "${google_compute_network.vpc_network.self_link}"
+  peer_network = "projects/wabbit/global/networks/klasa-vpc"
+}
+
+
 
 resource "google_compute_firewall" "wabbit_fw" {
   name    = "wabbit-firewall"
