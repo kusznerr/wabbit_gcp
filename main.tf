@@ -24,7 +24,7 @@ resource "google_compute_instance" "bbb_instance" {
   name         = "${var.wabbitwww}${count.index}"
   zone        = var.zone
   //machine_type = "f1-micro"
-  machine_type = "c2-standard-8"
+  machine_type = "n2-standard-8"
 
   boot_disk {
     initialize_params {
