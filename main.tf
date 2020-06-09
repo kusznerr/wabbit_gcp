@@ -23,8 +23,8 @@ resource "google_compute_instance" "bbb_instance" {
   count        = var.gcp_vm_count
   name         = "${var.wabbitwww}${count.index}"
   zone        = var.zone
-  machine_type = "f1-micro"
-  //machine_type = "c2-standard-16"
+  //machine_type = "f1-micro"
+  machine_type = "c2-standard-16"
 
   boot_disk {
     initialize_params {
@@ -42,7 +42,7 @@ resource "google_compute_instance" "bbb_instance" {
   }
 }
 
-/*resource "google_compute_instance" "nomad_instance" {
+resource "google_compute_instance" "nomad_instance" {
   //count        = var.gcp_vm_count
   name         = "nomad-${var.wabbitwww}"
   zone        = var.zone
@@ -53,12 +53,7 @@ resource "google_compute_instance" "bbb_instance" {
       image = "ubuntu-os-cloud/ubuntu-1804-lts"
     }
   }
-  provisioner "remote-exec" {
-    inline = [
-      "ls /tmp"
-    ]
-  }
-
+  
   network_interface {
     # A default network is created for all GCP projects
     subnetwork       = google_compute_subnetwork.wabbit-subnet.self_link
@@ -66,7 +61,7 @@ resource "google_compute_instance" "bbb_instance" {
       }
   }
 }
-*/
+
 resource "google_compute_network" "vpc_network" {
   name                    = var.network_name
   auto_create_subnetworks = "false"
