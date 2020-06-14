@@ -28,7 +28,7 @@ resource "google_compute_instance" "bbb_instance" {
   machine_type = "n1-standard-8"
   boot_disk {
     initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-1804-lts"
+      image = "ubuntu-os-cloud/ubuntu-1604-lts"
     }
   }
 
