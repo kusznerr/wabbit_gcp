@@ -5,6 +5,6 @@ wabbit_cidr_rage - needs to be unique across entire wabbit estate , thus follow 
 */
 
 project = "wabbit-rk2"
-wabbitwww = "www4"
+wabbitwww = "www6"
 gcp_vm_count = "2"
 wabbit_cidr_range = "10.4.0.0/20"
