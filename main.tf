@@ -42,6 +42,7 @@ resource "google_compute_instance" "bbb_instance" {
   }
 }
 
+?*
 resource "google_compute_instance" "nomad_instance" {
   //count        = var.gcp_vm_count
   name         = "nomad-${var.wabbitwww}"
@@ -61,7 +62,7 @@ resource "google_compute_instance" "nomad_instance" {
       }
   }
 }
-
+*/
 resource "google_compute_network" "vpc_network" {
   name                    = var.network_name
   auto_create_subnetworks = "false"
