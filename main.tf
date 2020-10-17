@@ -28,6 +28,7 @@ resource "google_compute_instance" "bbb_instance" {
   machine_type = "n1-standard-8"
   boot_disk {
     initialize_params {
+      size = "100"
       image = "ubuntu-os-cloud/ubuntu-1604-lts"
     }
   }
@@ -42,27 +43,7 @@ resource "google_compute_instance" "bbb_instance" {
   }
 }
 
-/*
-resource "google_compute_instance" "nomad_instance" {
-  //count        = var.gcp_vm_count
-  name         = "nomad-${var.wabbitwww}"
-  zone        = var.zone
-  machine_type = "f1-micro"
 
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-1804-lts"
-    }
-  }
-  
-  network_interface {
-    # A default network is created for all GCP projects
-    subnetwork       = google_compute_subnetwork.wabbit-subnet.self_link
-    access_config {
-      }
-  }
-}
-*/
 resource "google_compute_network" "vpc_network" {
   name                    = var.network_name
   auto_create_subnetworks = "false"
