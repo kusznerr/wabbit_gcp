@@ -26,6 +26,11 @@ resource "google_compute_instance" "bbb_instance" {
   //machine_type = "f1-micro"
   //machine_type = "n2-standard-8"
   machine_type = "n1-standard-8"
+
+  labels = {
+    env="wabbit"
+  }
+  
   boot_disk {
     initialize_params {
       size = "100"
